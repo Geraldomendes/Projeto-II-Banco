@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register | Qi Events</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+  <script src="assets/javascript/mapa.js" type="module"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="index.html">
+        <img src="assets/img/logo.svg" alt="QiEvents logo" class="header__logo">
+      </a>
+      <nav class="header__nav">
+        <ul class="nav__list">
+          <li><a href="show.html">See all events</a></li>
+          <li><a href="register.html">Register your event</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="map"></div>
+
+  <div id="form">
+    <h1>Insert your event details</h1>
+    <form action="/events" method="post">
+      <div class="input__group">
+        <label for="titulo">Titulo:</label>
+        <input type="text" id="titulo" required/>
+      </div>
+      <div class="input__group">
+        <label for="dataInicio">Data Inicio:</label>
+        <input type="date" id="dataInicio" required/>
+      </div>
+      <div class="input__group">
+        <label for="dataFim">Data Fim:</label>
+        <input type="date" id="dataFim" required/>
+      </div>
+      <div class="input__group">
+        <label for="descricao">Description:</label>
+        <textarea type="text" id="descricao"></textarea>
+      </div>
+      <div class="required-point hidden">
+        <p>Selecione os pontos para salvar</p>
+      </div>
+      <div class="input__group">
+        <button id="event-save" class="button button__primary" type="button">Salvar</button>
+      </div>
+      
+    </form>
+  </div>
+
+  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnfTZOnoLTtbNbxD4z2qyJXP62diczb8k&callback=initMap&libraries=&v=weekly"
+    defer
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>
