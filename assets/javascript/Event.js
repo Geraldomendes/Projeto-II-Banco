@@ -97,14 +97,22 @@ export default class Event {
       const p = document.createElement("p");
       const editar = document.createElement("button");
       const deletar = document.createElement("button");
+      const curtir = document.createElement("button");
+      const p2 = document.createElement("p");
+      const recomendados = document.createElement("p");
 
       ul.appendChild(li);
       li.setAttribute("id", "event__li");
       editar.setAttribute("id", "botaoEditar");
       deletar.setAttribute("id", "botaoDeletar");
+      curtir.setAttribute("id", "botaoCurtir");
+      p2.setAttribute('id', "set-recomendados");
+      recomendados.setAttribute("id", "recomendados");
 
       deletar.addEventListener('click', () => this.delete(`${event._id}`));
       editar.addEventListener('click', () => window.location.assign(`edit.html?id=${event._id}`));
+      curtir.addEventListener('click', () => this.curtir(`${event._id}`));
+      this.recomendados(`${event._id}`, recomendados);
 
       li.appendChild(h3);
       li.appendChild(div);
@@ -113,6 +121,9 @@ export default class Event {
       li.appendChild(p);
       li.appendChild(editar);
       li.appendChild(deletar);
+      li.appendChild(curtir);
+      li.appendChild(p2)
+      li.appendChild(recomendados);
 
       h3.textContent = event.titulo;
       pDataInicio.textContent = `Data Início: ${dayjs(event.dataInicio).utc().format('DD[/]MM[/]YYYY')}`;
@@ -120,6 +131,8 @@ export default class Event {
       p.textContent = `Descrição: ${event.descricao}`;
       editar.textContent = 'Editar';
       deletar.textContent = 'Deletar';
+      curtir.textContent = 'Curtir';
+      p2.textContent = 'Eventos Recomendados:';
     });
 
     const searchButton = document.getElementById('search-button');
@@ -191,6 +204,44 @@ export default class Event {
     } catch (error) {
       alert("Ocorreu um erro ao deletar o evento.");
     }  
+  }
+
+  async curtir(id){
+    try {
+      await axios.get(`http://localhost:3000/like/${id}`, {
+        headers: {
+          Authorization: document.cookie.substring(13),
+        }
+      });
+      alert("Evento curtido.");
+      window.location.reload();
+    } catch (error) {
+      const statusCode = error.response.status;
+      if(statusCode == 404){
+        alert("O usuário precisa estar logado para curtir eventos.");
+      }
+      if(statusCode == 500){
+        alert('Ocorreu um erro ao curtir o evento.');
+      }
+    }  
+  }
+
+  async recomendados(id, prop){
+    try {
+      const response = await axios.get(`http://localhost:3000/liked/${id}`);
+      const array = response.data;
+      array.map((event, index) => {
+        prop.innerHTML = prop.innerHTML.concat(`
+          <p style="padding:0;margin: 0;margin-top: 2px;">
+            ${index+1}° - ${event.titulo}
+          </p>  
+        `);
+      })
+
+
+    } catch (error) {
+      alert('Erro no servidor');
+    }
   }
 
   async search(maps, map){

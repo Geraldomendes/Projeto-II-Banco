@@ -6,16 +6,20 @@
 	<title>Home | Qi Events</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
 </head>
+
 <body>
 	<header class="header">
 		<div class="container">
 			<a href="index.html">
-        <img src="assets/img/logo.svg" alt="QiEvents logo" class="header__logo">
-      </a>
+        		<img src="assets/img/logo.svg" alt="QiEvents logo" width="150px">
+      		</a>
 			<nav class="header__nav">
 				<ul class="nav__list">
 					<li><a href="show.html">See all events</a></li>
 					<li><a href="register.html">Register your event</a></li>
+					<li><a href="signup.html" id="button-signup">Sign Up</a></li>
+					<li><a href="signin.html" id="button-signin">Sign In</a></li>
+					<li><button id="button-signout" style="display: none;">Sign Out</button></li>
 				</ul>
 			</nav>
 		</div>
@@ -43,5 +47,6 @@
 		<img src="assets/img/register-image.png" alt="Image of a person with a notebook" class="image">
 	</section>
 	<footer>Copyright by José Ferreira & Geraldo Mendes.</footer>
+	<script src="assets/javascript/User.js" type="module"></script>
 </body>
 </html>

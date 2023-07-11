@@ -69,25 +69,22 @@ html {
 .header .container {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	height: 70px;
 }
 
-.header__logo {
-	width: 150px;
-}
-
 .header__nav {
-	width: 320px;
+	margin-left: auto;
 }
 
 .nav__list {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+}
+.nav__list button {
+	border: none;
+	background-color: transparent;
 }
 
-.nav__list a {
+.nav__list a, .nav__list button {
 	color: var(--text-color);
 	display: inline-block;
 	font-size: 1rem;
@@ -98,7 +95,7 @@ html {
 	transition: .5s;
 }
 
-.nav__list a:hover {
+.nav__list a:hover, .nav__list button:hover {
 	color: var(--bg-color);
 	background-color: var(--brand-color);
 }
@@ -301,12 +298,40 @@ main.event__list {
 	font-size: medium;
 }
 
+#botaoCurtir {
+	background-color: rgb(23, 109, 207);
+	margin-left: 10px;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+	color: white;
+	transition: 1s;
+	cursor: pointer;
+	padding: 3px 6px;
+	font-size: medium;
+}
+
 #botaoEditar:hover{
 	background-color: rgb(4, 85, 30);
 }
 
 #botaoDeletar:hover{
 	background-color: rgb(132, 11, 11);
+}
+
+#botaoCurtir:hover {
+	background-color:rgb(0, 66, 137);
+}
+#set-recomendados{
+	margin: 0;
+	margin-top: 10px;
+	padding: 0;
+}
+
+#recomendados {
+	text-shadow: 1px 1px 1px black;
+	font-weight: bold;
+	color: orange;
 }
 
 #search{
@@ -381,4 +406,83 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.col {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-inner {
+  max-width: 300px;
+}
+
+.form-header {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0069d9;
 }
